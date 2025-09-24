@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camp Catanese Scholarship Database</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🎓</div>
+      <div class="title">
+        <h1>Camp Catanese Scholarship Database</h1>
+        <p class="subtitle">Search, filter, and ⭐ save opportunities tailored to you.</p>
+      </div>
+    </div>
+
+    <nav class="actions">
+      <button id="showAllBtn" class="btn ghost">All</button>
+      <button id="showFavsBtn" class="btn">Favorites</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Questionnaire -->
+    <section class="card filter-card" id="questionnaire">
+      <div class="card-head">
+        <h2>Find Scholarships</h2>
+        <span class="tag">Guided search</span>
+      </div>
+
+      <form id="filterForm" class="form-grid" autocomplete="off">
+        <!-- Year in school -->
+        <div class="field">
+          <label for="yearInput">What year are you in school?</label>
+          <input id="yearInput" list="yearOptions" placeholder="e.g., Senior, Freshman, College Sophomore" />
+          <datalist id="yearOptions"></datalist>
+          <span class="hint">We’ll match against eligibility grade/target audience.</span>
+        </div>
+
+        <!-- Non-US citizen interest -->
+        <div class="field">
+          <label for="nonUS">Are you interested in scholarships for non-US citizens?</label>
+          <select id="nonUS">
+            <option value="any" selected>Any</option>
+            <option value="yes">Yes, include non-US options</option>
+            <option value="no">No, only US-citizen required</option>
+          </select>
+        </div>
+
+        <!-- Degree pursuing -->
+        <div class="field">
+          <label for="degreeInput">What degree are you pursuing?</label>
+          <input id="degreeInput" list="degreeOptions" placeholder="e.g., Associate, Bachelor’s, Master’s" />
+          <datalist id="degreeOptions"></datalist>
+          <span class="hint">We’ll match intended level of study / audience.</span>
+        </div>
+
+        <!-- Quick text search -->
+        <div class="field full">
+          <label for="searchInput">Keyword (optional)</label>
+          <input id="searchInput" placeholder="Try: Arizona, STEM, Latinx, first-gen…" />
+        </div>
+
+        <div class="buttons">
+          <button type="submit" class="btn primary">Search</button>
+          <button type="button" id="resetBtn" class="btn ghost">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results header -->
+    <section class="results-head">
+      <h3 id="resultsCount">Results</h3>
+      <div class="sort-wrap">
+        <label for="sortSelect">Sort by</label>
+        <select id="sortSelect">
+          <option value="relevance" selected>Relevance</option>
+          <option value="closesAsc">Soonest deadline</option>
+          <option value="amountDesc">Largest amount</option>
+          <option value="nameAsc">Name (A–Z)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section id="cards" class="cards"></section>
+  </main>
+
+  <footer class="footer">
+    <small>© Camp Catanese Foundation • Built for students</small>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
